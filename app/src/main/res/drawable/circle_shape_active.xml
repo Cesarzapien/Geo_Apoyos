@@ -1,0 +1,8 @@
+<!-- circle_shape_active.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <size
+        android:width="15dp"
+        android:height="15dp" />
+    <solid android:color="@color/colorActive" /> <!-- Color del círculo para estado activo -->
+</shape>

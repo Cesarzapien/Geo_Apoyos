@@ -50,8 +50,8 @@ public class LoginActivity extends AppCompatActivity {
             String correo= email.getText().toString();
             String password = password_in.getText().toString();
 
-            if (password.isEmpty() || password.length() < 8) {
-                password_in.setError("La contraseña debe de tener mas de 8 caracteres");
+            if (password.isEmpty() || password.length() < 5) {
+                password_in.setError("La contraseña debe de tener mas de 5 caracteres");
             } else if (correo.isEmpty() || correo.length() < 8 || !correo.contains("@")) {
                 email.setError("El Correo debe de tener @");
             } else {
@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
     private void attemptLogin(String correo, String password) {
         // Crear el cliente Retrofit
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://e711-2806-2f0-6000-eb1b-616a-290c-cd35-de7a.ngrok-free.app") // Reemplaza con la URL de tu API
+                .baseUrl("https://jellyfish-app-jr47t.ondigitalocean.app") // Reemplaza con la URL de tu API
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

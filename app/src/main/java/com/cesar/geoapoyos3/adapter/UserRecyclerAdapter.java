@@ -1,8 +1,11 @@
 package com.cesar.geoapoyos3.adapter;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,6 +14,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cesar.geoapoyos3.R;
+import com.cesar.geoapoyos3.SolicitanteActivity;
 import com.cesar.geoapoyos3.model.Solicitante;
 
 import java.util.List;
@@ -54,6 +58,7 @@ public class UserRecyclerAdapter extends RecyclerView.Adapter<UserRecyclerAdapte
         public TextView institucion;
         public ImageView profilePic;
         public ImageView status;
+        public ImageButton arrow;
 
         public UserViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -63,6 +68,44 @@ public class UserRecyclerAdapter extends RecyclerView.Adapter<UserRecyclerAdapte
             institucion = itemView.findViewById(R.id.txtInstitucionSolicitante);
             profilePic = itemView.findViewById(R.id.profile_pic_image_view);
             status = itemView.findViewById(R.id.status_solicitante);
+            arrow = itemView.findViewById(R.id.arrow_image);
+
+            arrow.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Handle item click here
+                    int position = getAdapterPosition();
+                    Solicitante solicitante = solicitantes.get(position);
+
+                    // Navigate to SolicitanteActivity
+                    Intent intent = new Intent(v.getContext(), SolicitanteActivity.class);
+
+                    // Optionally, pass data to SolicitanteActivity (replace with relevant data):
+                    intent.putExtra("instucion_solicitante", solicitante.getInstitucion());
+                    intent.putExtra("nombre_solicitante", solicitante.getNombre() + " " + solicitante.getPrimerApellido());
+
+                    v.getContext().startActivity(intent);
+                    ((Activity) v.getContext()).overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); // Replace with your animation resources
+                }
+            });
+
+            //itemView.setOnClickListener(new View.OnClickListener() {
+                //@Override
+                //public void onClick(View v) {
+                    // Handle item click here
+                    //int position = getAdapterPosition();
+                    //Solicitante solicitante = solicitantes.get(position);
+
+                    // Navigate to SolicitanteActivity
+                    //Intent intent = new Intent(v.getContext(), SolicitanteActivity.class);
+
+                    // Optionally, pass data to SolicitanteActivity (replace with relevant data):
+                    //intent.putExtra("solicitanteId", solicitante.getId());
+                    //intent.putExtra("solicitanteNombre", solicitante.getNombre() + " " + solicitante.getPrimerApellido());
+
+                    //v.getContext().startActivity(intent);
+                //}
+            //});
         }
     }
 }

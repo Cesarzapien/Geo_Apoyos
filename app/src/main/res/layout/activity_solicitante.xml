@@ -79,7 +79,240 @@
                 android:layout_width="52dp"
                 android:layout_height="52dp"
                 android:layout_alignParentStart="true"
+                android:layout_marginBottom="27dp"
                 android:layout_marginStart="5dp"  />
+
+            <TextView
+                android:id="@+id/estatus_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/spinner_estatus"
+                android:text="Estatus"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/coordenadas_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/spinner_estatus"
+                android:layout_marginTop="130dp"
+                android:layout_marginBottom="-50dp"
+                android:text="Coordenadas"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <com.cesar.geoapoyos3.model.CustomSpinner
+                android:id="@+id/spinner_estatus"
+                android:layout_width="160dp"
+                android:layout_height="25dp"
+                android:dropDownVerticalOffset="40dp"
+                android:layout_below="@+id/profile_pic_view2"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/bg_spinner_estatus"/>
+
+            <TextView
+                android:id="@+id/razon_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/spinner_razon"
+                android:layout_marginStart="180dp"
+                android:text="Razón"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <com.cesar.geoapoyos3.model.CustomSpinner
+                android:id="@+id/spinner_razon"
+                android:layout_width="160dp"
+                android:layout_height="25dp"
+                android:dropDownVerticalOffset="40dp"
+                android:layout_below="@+id/profile_pic_view2"
+                android:layout_toRightOf="@+id/spinner_estatus"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/bg_spinner_estatus"/>
+
+            <EditText
+                android:id="@+id/coordenadas_input"
+                android:layout_width="160dp"
+                android:layout_height="25dp"
+                android:layout_below="@+id/spinner_estatus"
+                android:inputType="number"
+                android:hint="Eje x"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/custom_input"
+                android:textColor="@color/black"
+                android:textSize="14sp"/>
+
+            <EditText
+                android:id="@+id/coordenadas_input_y"
+                android:layout_width="160dp"
+                android:layout_height="25dp"
+                android:inputType="number"
+                android:hint="Eje y"
+                android:layout_toRightOf="@+id/coordenadas_input"
+                android:layout_marginTop="130dp"
+                android:layout_marginStart="20dp"
+                android:background="@drawable/custom_input"
+                android:textColor="@color/black"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/fecha_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/fecha_input"
+                android:layout_marginTop="130dp"
+                android:layout_marginBottom="-22dp"
+                android:text="Fecha y hora de la visita"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/fecha_input"
+                android:layout_width="150dp"
+                android:layout_height="25dp"
+                android:layout_below="@+id/coordenadas_input_y"
+                android:inputType="date"
+                android:hint="20/01/2023"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/custom_input"
+                android:textColor="@color/black"
+                android:textSize="14sp"/>
+
+            <EditText
+                android:id="@+id/hora_input"
+                android:layout_width="110dp"
+                android:layout_height="25dp"
+                android:layout_below="@+id/coordenadas_input"
+                android:inputType="time"
+                android:hint="15:14"
+                android:layout_marginTop="23dp"
+                android:layout_marginStart="180dp"
+                android:background="@drawable/custom_input"
+                android:textColor="@color/black"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/visitador_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/nombre_visitador"
+                android:layout_marginTop="130dp"
+                android:layout_marginBottom="-22dp"
+                android:text="Nombre del visitador"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/nombre_visitador"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_below="@+id/fecha_input"
+                android:inputType="text"
+                android:hint="Nombre del visitador"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/custom_input"
+                android:textColor="@color/black"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/foto_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/foto_input"
+                android:layout_marginTop="130dp"
+                android:layout_marginBottom="-22dp"
+                android:text="Nombre del visitador"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/foto_input"
+                android:layout_width="160dp"
+                android:layout_height="25dp"
+                android:layout_below="@+id/nombre_visitador"
+                android:inputType="text"
+                android:hint="jpg, png, jpeg..."
+                android:layout_marginTop="25dp"
+                android:background="@drawable/custom_input"
+                android:textColor="@color/black"
+                android:textSize="14sp"/>
+
+            <ImageButton
+                android:id="@+id/btngaleria"
+                android:layout_width="29dp"
+                android:layout_height="24dp"
+                android:layout_toRightOf="@+id/foto_input"
+                android:layout_marginStart="7dp"
+                android:layout_marginTop="281dp"
+                android:background="@color/my_primary"
+                android:src="@drawable/gallery"/>
+
+            <ImageButton
+                android:id="@+id/btncamara"
+                android:layout_width="29dp"
+                android:layout_height="24dp"
+                android:layout_toRightOf="@+id/foto_input"
+                android:layout_marginStart="45dp"
+                android:layout_marginTop="281dp"
+                android:background="@color/my_primary"
+                android:src="@drawable/mini_camera"/>
+
+            <ImageView
+                android:id="@+id/image_view"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/foto_input"
+                android:background="@drawable/camera_view"
+                android:scaleType="center"
+                android:src="@drawable/big_camera" />
+
+
+            <TextView
+                android:id="@+id/switch_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/image_view"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="22dp"
+                android:text="¿El cliente es el mismo que el solicitante?"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <Switch
+                android:id="@+id/switch_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:thumb="@drawable/thumb"
+                android:track="@drawable/track"
+                android:layout_below="@+id/image_view"
+                android:layout_marginTop="13dp"
+                android:layout_marginStart="6dp"
+                android:layout_toRightOf="@+id/switch_label"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+            <Button
+                android:id="@+id/btn_enviar_datos"
+                android:textColor="@color/white"
+                android:layout_width="290dp"
+                android:layout_marginStart="15dp"
+                android:layout_height="39dp"
+                android:layout_marginTop="7dp"
+                android:layout_below="@+id/switch_label"
+                android:textSize="14sp"
+                android:text="INICIAR SESIÓN"
+                android:elevation="8dp"/>
+
+
 
             <LinearLayout
                 android:paddingStart="6dp"
@@ -91,21 +324,20 @@
                 android:padding="4dp">
 
                 <TextView
-                    android:id="@+id/text_view_1"
+                    android:id="@+id/nombre_solicitante"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Mariana Antonia Rico Mójica"
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/text_view_2"
+                    android:id="@+id/instucion_solicitante"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Universidad Tecnológica de León"
                     android:textSize="14sp" />
 
             </LinearLayout>
-
 
 
         </RelativeLayout>

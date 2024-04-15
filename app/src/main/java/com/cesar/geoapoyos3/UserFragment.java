@@ -32,16 +32,16 @@ public class UserFragment extends Fragment {
         // Initialize the list of solicitantes
         solicitantes = new ArrayList<>();
         // Add some sample data for testing
-        solicitantes.add(new Solicitante(1, "Juan", "Perez", "Gomez", "Masculino", "30", "Universidad X", "Grado X", "Apoyo X", "Activo", "juan@example.com"));
-        solicitantes.add(new Solicitante(2, "Maria", "Garcia", "Lopez", "Femenino", "25", "Colegio Y", "Grado Y", "Apoyo Y", "Inactivo", "maria@example.com"));
-        solicitantes.add(new Solicitante(3, "Carlos", "Lopez", "Gutierrez", "Masculino", "35", "Instituto Z", "Grado Z", "Apoyo Z", "Activo", "carlos@example.com"));
-        solicitantes.add(new Solicitante(4, "Ana", "Martinez", "Fernandez", "Femenino", "28", "Escuela W", "Grado W", "Apoyo W", "Activo", "ana@example.com"));
-        solicitantes.add(new Solicitante(5, "Pedro", "Sanchez", "Diaz", "Masculino", "32", "Colegio V", "Grado V", "Apoyo V", "Inactivo", "pedro@example.com"));
-        solicitantes.add(new Solicitante(6, "Laura", "Gomez", "Rodriguez", "Femenino", "29", "Universidad Q", "Grado Q", "Apoyo Q", "Activo", "laura@example.com"));
-        solicitantes.add(new Solicitante(7, "Luis", "Hernandez", "Santos", "Masculino", "31", "Colegio P", "Grado P", "Apoyo P", "Inactivo", "luis@example.com"));
-        solicitantes.add(new Solicitante(8, "Elena", "Fernandez", "Garcia", "Femenino", "27", "Escuela O", "Grado O", "Apoyo O", "Activo", "elena@example.com"));
-        solicitantes.add(new Solicitante(9, "Raul", "Diaz", "Alvarez", "Masculino", "33", "Instituto N", "Grado N", "Apoyo N", "Inactivo", "raul@example.com"));
-        solicitantes.add(new Solicitante(10, "Sofia", "Perez", "Hernandez", "Femenino", "26", "Universidad M", "Grado M", "Apoyo M", "Activo", "sofia@example.com"));
+        solicitantes.add(new Solicitante(1, "Juan", "Perez", "Gomez", "Masculino", "30", "Universidad Tecnológica de México", "Grado X", "Apoyo X", "Activo", "juan@example.com"));
+        solicitantes.add(new Solicitante(2, "Maria", "Garcia", "Lopez", "Femenino", "25", "Universidad Tecnológica de León", "Grado Y", "Apoyo Y", "Inactivo", "maria@example.com"));
+        solicitantes.add(new Solicitante(3, "Carlos", "Lopez", "Gutierrez", "Masculino", "35", "Universidad Autónoma de México", "Grado Z", "Apoyo Z", "Activo", "carlos@example.com"));
+        solicitantes.add(new Solicitante(4, "Ana", "Martinez", "Fernandez", "Femenino", "28", "Universidad de Guanajuato", "Grado W", "Apoyo W", "Activo", "ana@example.com"));
+        solicitantes.add(new Solicitante(5, "Pedro", "Sanchez", "Diaz", "Masculino", "32", "Universidad de León", "Grado V", "Apoyo V", "Inactivo", "pedro@example.com"));
+        solicitantes.add(new Solicitante(6, "Laura", "Gomez", "Rodriguez", "Femenino", "29", "Instituto Politécnico Nacional", "Grado Q", "Apoyo Q", "Activo", "laura@example.com"));
+        solicitantes.add(new Solicitante(7, "Luis", "Hernandez", "Santos", "Masculino", "31", "Universidad Autónoma de México", "Grado P", "Apoyo P", "Inactivo", "luis@example.com"));
+        solicitantes.add(new Solicitante(8, "Elena", "Fernandez", "Garcia", "Femenino", "27", "Universidad de León", "Grado O", "Apoyo O", "Activo", "elena@example.com"));
+        solicitantes.add(new Solicitante(9, "Raul", "Diaz", "Alvarez", "Masculino", "33", "Universidad de la Salle", "Grado N", "Apoyo N", "Inactivo", "raul@example.com"));
+        solicitantes.add(new Solicitante(10, "Sofia", "Perez", "Hernandez", "Femenino", "26", "Universidad Tecnológica de León", "Grado M", "Apoyo M", "Activo", "sofia@example.com"));
     }
 
     @Override

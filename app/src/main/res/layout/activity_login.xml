@@ -70,6 +70,7 @@
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
                 android:background="@drawable/custom_input"
+                android:textColor="@color/black"
                 android:textSize="14sp"/>
 
             <View
@@ -92,6 +93,7 @@
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
                 android:background="@drawable/custom_input"
+                android:textColor="@color/black"
                 android:textSize="14sp"
                 android:drawableEnd="@drawable/close_eye"/>
 

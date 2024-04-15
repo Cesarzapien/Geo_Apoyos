@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
     private void attemptLogin(String correo, String password) {
         // Crear el cliente Retrofit
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://bac2-2806-2f0-6000-eb1b-6903-3f19-33a-3be6.ngrok-free.app/") // Reemplaza con la URL de tu API
+                .baseUrl("https://e711-2806-2f0-6000-eb1b-616a-290c-cd35-de7a.ngrok-free.app") // Reemplaza con la URL de tu API
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

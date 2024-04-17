@@ -1,6 +1,7 @@
 package com.cesar.geoapoyos3;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -86,11 +87,20 @@ public class LoginActivity extends AppCompatActivity {
 
                     // Check for null response object before accessing properties
                     if (loginResponse != null) {
-                        LoginResponse.Usuario usuario = loginResponse.getUsuario();
+                        String tokenString = loginResponse.getToken();
                         // Check for null usuario object before accessing token
-                        if (usuario != null) {
+                        if (tokenString != null) {
                             // Handle successful login (store user/token, navigate to new activity)
-                            Log.d("LoginActivity", "Usuario: " + usuario.toString());
+                            Log.d("LoginActivity", "Token: " + tokenString);
+                            // After getting the tokenString
+                            SharedPreferences sharedPref = getSharedPreferences("my_prefs", MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPref.edit();
+                            editor.putString("access_token", tokenString);
+                            editor.apply();
+
+                            // Later to retrieve the token
+                            String savedToken = sharedPref.getString("access_token", null);
+
                             startActivity(new Intent(LoginActivity.this, SplashActivity.class));
                         } else {
                             // Handle unexpected response structure (empty usuario object)

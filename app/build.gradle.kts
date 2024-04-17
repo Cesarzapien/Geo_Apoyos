@@ -37,6 +37,8 @@ dependencies {
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+    implementation(files("C:\\Users\\cesar\\Downloads\\Geo-Apoyos-main\\Geo-Apoyos-main\\heresdk\\heresdk.aar"))
+    implementation(files("C:\\Users\\cesar\\Downloads\\Geo-Apoyos-main\\Geo-Apoyos-main\\heresdk\\heresdk.aar"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

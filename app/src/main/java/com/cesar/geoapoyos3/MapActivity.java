@@ -2,17 +2,29 @@ package com.cesar.geoapoyos3;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.here.sdk.core.GeoCoordinates;
-import com.here.sdk.core.Location;
 import com.here.sdk.core.engine.SDKNativeEngine;
 import com.here.sdk.core.engine.SDKOptions;
 import com.here.sdk.core.errors.InstantiationErrorException;
@@ -27,7 +39,11 @@ import java.util.Date;
 
 public class MapActivity extends AppCompatActivity {
 
+    private final int FINE_PERMISSION_CODE = 1;
     private MapView mapView;
+    private Context context;
+    Location currentLocation;
+    FusedLocationProviderClient fusedLocationProviderClient;
 
 
     @Override
@@ -38,10 +54,32 @@ public class MapActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_map);
 
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+        getLastLocation();
+
+
         // Get a MapView instance from the layout.
         mapView = findViewById(R.id.map_view);
         mapView.onCreate(savedInstanceState);
         loadMapScene();
+    }
+
+    private void getLastLocation() {
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},FINE_PERMISSION_CODE);
+            return;
+        }
+        Task<Location> task = fusedLocationProviderClient.getLastLocation();
+        task.addOnSuccessListener(new OnSuccessListener<Location>() {
+            @Override
+            public void onSuccess(Location location) {
+                if(location !=null){
+                    currentLocation = location;
+                    mapView = findViewById(R.id.map_view);
+                    loadMapScene();
+                }
+            }
+        });
     }
 
     private void initializeHERESDK() {
@@ -66,12 +104,46 @@ public class MapActivity extends AppCompatActivity {
                     double distanceInMeters = 1000 * 10;
                     MapMeasure mapMeasureZoom = new MapMeasure(MapMeasure.Kind.DISTANCE, distanceInMeters);
                     mapView.getCamera().lookAt(
-                            new GeoCoordinates(52.530932, 13.384915), mapMeasureZoom);
+                            new GeoCoordinates(currentLocation.getLatitude(),currentLocation.getLongitude()), mapMeasureZoom);
+                    addLocationIndicator(new GeoCoordinates(currentLocation.getLatitude(),currentLocation.getLongitude()),LocationIndicator.IndicatorStyle.PEDESTRIAN);
                 } else {
                     Log.d("loadMapScene()", "Loading map failed: mapError: " + mapError.name());
                 }
             }
         });
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode == FINE_PERMISSION_CODE){
+            if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                getLastLocation();
+            }else{
+                Toast.makeText(this,"Location permission is denied",Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private void addLocationIndicator(GeoCoordinates geoCoordinates,
+                                      LocationIndicator.IndicatorStyle indicatorStyle) {
+        LocationIndicator locationIndicator = new LocationIndicator();
+        locationIndicator.setLocationIndicatorStyle(indicatorStyle);
+
+        // A LocationIndicator is intended to mark the user's current location,
+        // including a bearing direction.
+        com.here.sdk.core.Location location = new com.here.sdk.core.Location(geoCoordinates);
+        location.time = new Date();
+        location.bearingInDegrees = getRandom(0, 360);
+
+        locationIndicator.updateLocation(location);
+
+        // Show the indicator on the map view.
+        locationIndicator.enable(mapView);
+    }
+
+    private double getRandom(double min, double max) {
+        return min + Math.random() * (max - min);
     }
 
     private void disposeHERESDK() {

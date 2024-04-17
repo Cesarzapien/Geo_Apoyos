@@ -46,4 +46,5 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-scalars:2.10.0")
     implementation ("com.squareup.moshi:moshi:1.15.1")
     implementation ("com.squareup.retrofit2:converter-gson:2.10.0")
+    implementation ("com.google.android.gms:play-services-location:21.2.0")
 }

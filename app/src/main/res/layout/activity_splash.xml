@@ -20,6 +20,13 @@
         android:orientation="vertical"
         android:padding="40dp">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            android:id="@+id/idusuario_splash"/>
+
         <ImageView
             android:id="@+id/logo_image_view"
             android:layout_width="290dp"

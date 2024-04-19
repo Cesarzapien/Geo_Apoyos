@@ -7,6 +7,12 @@
     tools:context=".UserFragment">
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView_id_usuario_fragment"
+        android:textSize="12sp"/>
+
+    <TextView
         android:id="@+id/usuarios_por_visitar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -1,8 +1,8 @@
 package com.cesar.geoapoyos3;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.cesar.geoapoyos3.model.ErrorResponse;
 import com.cesar.geoapoyos3.model.LoginRequest;
@@ -83,25 +85,21 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 if (response.isSuccessful()) {
                     // Login successful
-                    LoginResponse loginResponse = response.body();
+                    LoginResponse usuarioRecortado = response.body();
 
                     // Check for null response object before accessing properties
-                    if (loginResponse != null) {
-                        String tokenString = loginResponse.getToken();
+                    if (usuarioRecortado != null) {
+                        LoginResponse.UsuarioRecortado usuarioRecortado1 = usuarioRecortado.getUsuarioRecortado();
                         // Check for null usuario object before accessing token
-                        if (tokenString != null) {
+                        if (usuarioRecortado != null) {
                             // Handle successful login (store user/token, navigate to new activity)
-                            Log.d("LoginActivity", "Token: " + tokenString);
-                            // After getting the tokenString
-                            SharedPreferences sharedPref = getSharedPreferences("my_prefs", MODE_PRIVATE);
-                            SharedPreferences.Editor editor = sharedPref.edit();
-                            editor.putString("access_token", tokenString);
-                            editor.apply();
-
-                            // Later to retrieve the token
-                            String savedToken = sharedPref.getString("access_token", null);
-
-                            startActivity(new Intent(LoginActivity.this, SplashActivity.class));
+                            Log.d("LoginActivity", "Usuario: " + usuarioRecortado1.toString());
+                            //String idusuario = String.valueOf(usuarioRecortado1.getIdUsuario());
+                            //Bundle enviaDatos = new Bundle();
+                            //enviaDatos.putString("idUsuario",idusuario);
+                            Intent intent_datos = new Intent(LoginActivity.this, SplashActivity.class);
+                            //intent_datos.putExtras(enviaDatos);
+                            startActivity(intent_datos);
                         } else {
                             // Handle unexpected response structure (empty usuario object)
                             Toast.makeText(LoginActivity.this, "Usuario no encontrado", Toast.LENGTH_SHORT).show();

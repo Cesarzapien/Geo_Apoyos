@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,10 +13,21 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class SplashActivity extends AppCompatActivity {
+    TextView idusuariosplash;
+    Bundle recibeDatos;
+    String info;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        idusuariosplash = findViewById(R.id.idusuario_splash);
+        recibeDatos = getIntent().getExtras();
+        if (recibeDatos != null) {
+            info = recibeDatos.getString("idUsuario");
+            if (info != null) {
+                idusuariosplash.setText(info);
+            }
+        }
 
         ImageView imageView = findViewById(R.id.logo_image_view);
 
@@ -36,8 +48,11 @@ public class SplashActivity extends AppCompatActivity {
         TimerTask tarea = new TimerTask() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-                startActivity(intent);
+                Bundle enviaDatos2 = new Bundle();
+                enviaDatos2.putString("idUsuario_main",info);
+                Intent intent_datos = new Intent(SplashActivity.this, MainActivity.class);
+                intent_datos.putExtras(enviaDatos2);
+                startActivity(intent_datos);
                 finish();
             }
         };
